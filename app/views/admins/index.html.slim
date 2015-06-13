@@ -1,0 +1,15 @@
+
+h1 User list management (#{@users.count})
+.col-md-6.col-md-offset-3
+
+  ul class="list-group"
+  	= link_to "Add new user", new_admin_path, class: "btn btn-default btn-primary"
+    - @users.each do |user|
+	    -if current_user.admin? && !current_user?(user)
+	      li 
+	        b
+	          =  "#{user.name} (#{user.email})"
+	          br
+	        -if current_user.admin? && !current_user?(user)
+	        	= link_to " Delete", admin_path(user),method: :delete, data: {confirm: 'Are you sure?'}
+    			

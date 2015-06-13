@@ -1,0 +1,7 @@
+.col-md-12
+	p
+		= f.text_area :content, :cols => "50", :rows => "6", placeholder: "Create new question here..."
+		
+		= f.fields_for :answers do |builder|
+			= render 'questions/answer_fields', f: builder
+				

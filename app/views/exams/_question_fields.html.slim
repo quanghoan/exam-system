@@ -1,0 +1,8 @@
+p
+	= f.label :content, "Question"
+	= f.text_area :content, :rows => 3
+	= f.check_box :_destroy
+	= f.label :_destroy, "Remove"
+= f.fields_for :answers do |builder|
+	= render 'exams/answer_fields', :f => builder
+end	

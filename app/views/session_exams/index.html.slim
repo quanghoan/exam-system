@@ -1,0 +1,19 @@
+h1 Session list (#{@session_exams.count})
+.col-md-6.col-md-offset-3
+  table.table
+    thead
+      tr
+        th Session
+        th Exam
+        th
+        th 
+    tbody
+      - @session_exams.each do |session_exam|
+        tr
+          td = link_to session_exam.name, session_exam 
+          td = "#{session_exam.exam.name}"
+          td = link_to "Edit", edit_session_exam_path(session_exam)
+          td = link_to "Destroy", session_exam, data: {:confirm => 'Are you sure?'}, :method => :delete
+          
+                                                     
+  = link_to 'New Session', new_session_exam_path

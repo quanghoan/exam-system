@@ -1,0 +1,14 @@
+h1 List of your sessions:
+.col-md-6.col-md-offset-3
+	table.table
+	  thead        
+	    tr
+	      th Exam sessions: (#{@user.user_session_exams.count})
+	      th No of questions
+	  tbody
+	    - @user_session_exams.each do |user_session_exam|
+	      tr
+	        td = user_session_exam.session_exam.name   
+	        td = user_session_exam.session_exam.exam.questions.count
+	        td = link_to 'Do now!',new_answer_sheet_path(:user_id => current_user.id, :session_exam_id => user_session_exam.session_exam_id)
+	  

@@ -1,0 +1,11 @@
+.col-md-6.col-md-offset-3
+  h1 Manage questions in #{@exam.name}
+  = link_to @exam.name, exam_path(@exam)
+
+  = form_for :exam, method: :patch do |f|
+    = collection_check_boxes(:exam, :question_ids, Question.all, :id, :content) do |q|
+      ul class ="list-group"
+        li class=" list-group-item "
+          = q.label(:"data-value" => q.value) {q.check_box + q.text}
+    .actions
+    = f.submit "Update", class: "btn btn-primary"

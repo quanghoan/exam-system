@@ -1,0 +1,13 @@
+= form_for @session_exam do |f|
+	.col-md-6.col-md-offset-3
+		p
+			= f.label :name
+			= f.text_field :name, class: 'form-control', placeholder: "Create new session exam..."
+			br
+				|Select an exam for this session:
+      	- @exams.each do |exam|
+        	.radio
+	          = f.radio_button :exam_id, exam.id
+	          = f.label :exam_id, exam.name
+    	.actions
+			= f.submit "Submit", class: "btn btn-primary"

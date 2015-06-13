@@ -1,0 +1,35 @@
+header class="navbar navbar-fixed-top navbar-default"
+  .container
+    = link_to "Final Exam", root_path, id: "logo"
+    nav
+      p class="navbar-text pull-right"
+        - if logged_in?
+          strong
+            = link_to current_user.name, user_path(current_user)
+            = " | "
+            - if current_user.admin?
+              = link_to "Users", admins_path, class: 'navbar-link'
+              = " | "      
+            - elsif current_user.role == "examiner"
+              = link_to 'Questions', questions_path,
+                class: 'navbar-link'
+              =" | "
+              = link_to "Sessions", session_exams_path, class: 'navbar-link'
+              ="   |   "
+              = link_to "Exams", exams_path,
+                class: 'navbar-link'
+              =" | "
+            - else
+              = link_to "Result", see_result_path, class: 'navbar-link'
+              =" | "
+            = link_to 'Edit profile', edit_user_path(current_user),
+                  class: 'navbar-link'
+            =" | "
+            = link_to "Logout", logout_path, method: :delete,
+                  class: 'navbar-link'
+    
+        - else
+          = link_to "Sign up", signup_path,
+                class: 'navbar-link'
+          =" | "
+          = link_to "Login", login_path, class: 'navbar-link'

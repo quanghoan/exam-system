@@ -1,0 +1,26 @@
+h1 Exam Management
+.col-md-6.col-md-offset-3
+	p
+		
+	  strong Name: #{@exam.name}
+	  br
+	  strong There are #{@exam.questions.count} question(s) in this exam.
+	ol
+		- for question in @exam.questions
+			li
+				= question.content
+				ul
+					- for answer in question.answers
+						li= answer.content
+
+	= link_to 'Destroy', @exam, data: {:confirm => 'Are you sure?'}, :method => :delete
+	="  |  "
+	= link_to "Edit", edit_exam_path
+	="  |  "
+	= link_to "Exam list", exams_path
+	="  |  "
+	= link_to "Add more questions", exam_question_path
+	br
+	h3 List of sessions in this exam: (#{@exam.session_exams.count})
+	- for session_exam in @exam.session_exams
+		li= link_to "#{session_exam.name}", session_exam_path(session_exam)

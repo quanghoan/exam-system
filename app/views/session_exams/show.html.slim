@@ -1,0 +1,17 @@
+h1 Session management
+.col-md-6.col-md-offset-3
+	strong Session name: #{@session_exam.name}
+	br
+	strong Exam name:  
+	= link_to @session_exam.exam.name, exam_path(@exam)
+	br
+	= link_to 'Destroy', @session_exam, data: {:confirm => 'Are you sure?'}, :method => :delete
+	="  |  "
+	= link_to "Session list", session_exams_path
+	="  |  "
+	= link_to "Update", edit_session_exam_path(@session_exam)
+
+	h3 List of examinees in this session:(#{@session_exam.users.count})
+	- for user in @session_exam.users
+		li= user.name
+	= link_to "Assign Examinees", user_session_exam_path

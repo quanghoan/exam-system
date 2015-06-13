@@ -1,0 +1,14 @@
+h4 your exam is running...
+.col-md-8.col-md-offset-2
+	=form_for @answer_sheet do |f|
+	  strong Exam session: #{@session_exam.name}
+	  ol
+	    - for question in @exam.questions
+	      li
+	        = question.content
+	        ul
+	          - for answer in question.answers
+	            = radio_button_tag "answer[#{question.id}]", answer.id
+	            = label_tag answer.content 
+	            br
+  		= f.submit 'Submit'
