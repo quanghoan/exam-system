@@ -1,7 +1,7 @@
 class AdminsController < ApplicationController
-  before_action only: [:index, :edit, :update, :destroy]
-  before_action :admin_user,     only: :destroy
-  before_action :correct_user, only: [:edit, :update]
+  # before_action only: [:index, :edit, :update, :destroy]
+  # before_action :admin_user,     only: :destroy
+  # before_action :correct_user, only: [:edit, :update]
 
   def index
     @users = User.all
@@ -11,17 +11,16 @@ class AdminsController < ApplicationController
     @user = User.new
   end
 
-  def create
-    @user = User.new.(user_params)
-    if @user.save 
-      log_in @user
-      flash[:success] = "An user has been created!"
-      redirect_to new_admin_path
-    else
-      flash[:danger] = "invalid information."
-      redirect_to new_admin_path
-    end
-  end
+  # def create
+  #   @user = User.new(user_params)
+  #   if @user.save 
+  #     flash[:success] = "An user has been created!"
+  #     redirect_to admins_path
+  #   else
+  #     flash[:danger] = "invalid information."
+  #     redirect_to admins_path
+  #   end
+  # end
      
   def destroy
     User.find(params[:id]).destroy
@@ -43,18 +42,18 @@ class AdminsController < ApplicationController
     end
   end
 
-  private
+  # private
 
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :role)     
-  end
+  # def user_params
+  #   params.require(:user).permit(:name, :email, :password, :password_confirmation, :role)     
+  # end
 
-  def correct_user
-    @user = User.find(params[:id])
-    redirect_to(root_url) unless current_user?(@user)
-  end
+  # def correct_user
+  #   @user = User.find(params[:id])
+  #   redirect_to(root_url) unless current_user?(@user)
+  # end
 
-  def admin_user
-    redirect_to(root_url) unless current_user.role == "admin"
-  end
+  # def admin_user
+  #   redirect_to(root_url) unless current_user.role == "admin"
+  # end
 end

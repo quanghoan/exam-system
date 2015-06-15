@@ -3,7 +3,7 @@ class CreateAnswers < ActiveRecord::Migration
     create_table :answers do |t|
       t.integer :question_id
       t.string :content
-      t.string :correct_answer
+      t.boolean :is_correct
 
       t.timestamps null: false
     end

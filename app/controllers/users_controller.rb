@@ -20,10 +20,11 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(user_params)
   	if @user.save
-      log_in @user
-  		flash[:success] = "Welcome to the exam!"
-  		redirect_to @user
+      
+  		flash[:success] = "Successfully. plz login with account that you have created."
+  		redirect_to root_path
   	else
+      flash[:danger]= "failed"
   		render 'new'
   	end
 	end

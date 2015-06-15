@@ -2,7 +2,7 @@ class AnswerSheetsController < ApplicationController
   
   def show
     @answer_sheet = AnswerSheet.find(params[:id])
-    @session_exam = SessionExam.find(params[:session_exam_id])
+    # @session_exam = SessionExam.find(params[:session_exam_id])   
   end
 
   def new
@@ -24,14 +24,4 @@ class AnswerSheetsController < ApplicationController
       redirect_to answer_sheet_path(@answer_sheet)
     end
   end
-
-  def update
-    
-  end
-
-  private
-
-  # def answer_sheet_params
-  #   params.require(:answer_sheet).permit(:user_session_exam_id, :session_exam_id)
-  # end
 end

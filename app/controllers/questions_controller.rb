@@ -17,7 +17,7 @@ class QuestionsController < ApplicationController
   end
 
   def edit
-    #@question = Question.find(params[:id])
+    @question = Question.find(params[:id])
   end
 
   def create
@@ -50,7 +50,7 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:content, answers_attributes: [:id, :content])
+      params.require(:question).permit(:content, answers_attributes: [:id, :content, :is_correct])
     end
 end
 

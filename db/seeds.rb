@@ -10,7 +10,9 @@
                    email: "a@gmail.com",
                    password:              "foobar",
                    password_confirmation: "foobar",
-                   role:     "admin")
+                   admin: true
+            
+                   )
 
       User.create!(name:  "hoan examiner",
                    email: "b@gmail.com",
@@ -22,5 +24,6 @@
                    email: "c@gmail.com",
                    password:              "foobar",
                    password_confirmation: "foobar",
+                   role: "examinee"
                    )    
 end

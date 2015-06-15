@@ -19,9 +19,7 @@ class User < ActiveRecord::Base
   has_many :session_exams, through: :user_session_exams
   has_many :user_session_exams, dependent: :destroy
   has_many :answer_sheets
-  def admin?
-    self.role =='admin'
-  end
+  
 
   def examiner?
     self.role =='examiner'

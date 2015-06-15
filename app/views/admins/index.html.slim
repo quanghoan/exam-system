@@ -1,5 +1,5 @@
 
-h1 User list management (#{@users.count})
+h1 User list management (#{@users.count - 1})
 .col-md-6.col-md-offset-3
 
   ul class="list-group"
@@ -12,4 +12,6 @@ h1 User list management (#{@users.count})
 	          br
 	        -if current_user.admin? && !current_user?(user)
 	        	= link_to " Delete", admin_path(user),method: :delete, data: {confirm: 'Are you sure?'}
+	        	="    |    "
+	        	= " #{user.role}"
     			
