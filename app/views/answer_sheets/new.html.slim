@@ -1,4 +1,5 @@
 h4 your exam is running...
+
 .col-md-8.col-md-offset-2
 	=form_for @answer_sheet do |f|
 	  strong Exam session: #{@session_exam.name}
@@ -12,4 +13,4 @@ h4 your exam is running...
 	            = hidden_field_tag 'session_exam_id', @session_exam.id
 	            = label_tag answer.content 
 	            br
-  		= f.submit 'Submit'
+  		= f.submit 'Submit', id: "submit_answer_sheet", class: "btn btn-default btn-primary"
