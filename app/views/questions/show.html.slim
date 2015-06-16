@@ -4,8 +4,11 @@
 		= @question.content
 	ol
 		- for answer in @question.answers
-			li
-				= answer.content
+			-	if answer.is_correct
+				div id="correct"
+					li = answer.content
+			- else
+				li= answer.content		
 
 	= link_to 'Edit', edit_question_path(@question) 
 	="   |   "

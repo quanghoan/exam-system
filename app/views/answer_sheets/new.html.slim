@@ -9,7 +9,7 @@ h4 your exam is running...
 	        ul
 	          - for answer in question.answers
 	            = radio_button_tag "answer[#{question.id}]", answer.id
-	            = hidden_field_tag 'session_exam_id', :session_exam_id
+	            = hidden_field_tag 'session_exam_id', @session_exam.id
 	            = label_tag answer.content 
 	            br
   		= f.submit 'Submit'

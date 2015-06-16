@@ -1,0 +1,22 @@
+.col-md-6.col-md-offset-3
+	h1  Your result: 
+	
+	br
+	= "Session name: #{@session_exam.name} "
+	br
+	= "Submitted: #{Time.current}"
+	ol 
+		- count = 0
+		- for answer in @answer								
+			li= Question.find(answer[0]).content
+			- if Answer.find(answer[1]).is_correct?
+				strong Your answer: #{Answer.find(answer[1]).content} => #{Answer.find(answer[1]).is_correct?}
+				- count += 1
+			- else
+				strong Your answer: #{Answer.find(answer[1]).content} => #{Answer.find(answer[1]).is_correct?}	
+
+	strong= "Your score: #{count}/#{@session_exam.exam.questions.count}"
+	
+
+
+

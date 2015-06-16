@@ -24,7 +24,13 @@ h6
 	      	td	      	
 	      		ul 
 		      		- for answer in question.answers
-								li = answer.content		
+			      		-	if answer.is_correct
+			      			div id="correct"
+			      				li = answer.content
+			      		- else
+			      			li = answer.content			
+
+									
 	        td = link_to 'Show', question  
 	        td = link_to 'Edit', edit_question_path(question) 
 	        td = link_to 'Destroy', question, data: {:confirm => 'Are you sure?'}, :method => :delete
