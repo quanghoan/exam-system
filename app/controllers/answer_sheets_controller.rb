@@ -10,7 +10,8 @@ class AnswerSheetsController < ApplicationController
     @answer_sheet = AnswerSheet.new  
     @session_exam = SessionExam.find(params[:session_exam_id]) 
     # @user = User.find(params[:user_id])
-    @exam = @session_exam.exam   
+    @exam = @session_exam.exam  
+    @questions = @exam.questions 
   end
 
   def create   
