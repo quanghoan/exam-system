@@ -1,1 +1,1 @@
-# mmj-inter
+# mmj-intern
